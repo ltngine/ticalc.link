@@ -100,7 +100,7 @@ function attachClickListeners() {
 function selectFile() {
   const input = document.createElement('input');
   input.type  = 'file';
-  input.accept = '.8xp,.8xg,.8xv,.83p,.83g,.82p,.82g';
+  input.accept = '.b84,.8xg,.8xv,.83p,.83g,.82p,.82g';
   input.addEventListener('change', async c => {
     file = tifiles.parseFile(await readFile(c.target.files[0]));
     console.log(file);
@@ -129,7 +129,6 @@ function readFile(file) {
 async function sendFile() {
   if ( !calculator || !file ) return;
   if ( !calculator.canReceive(file) )
-    return alert('Sorry!', `The file you have selected does not appear to be a valid file for your ${calculator.name}.`);
   const details = await calculator.getStorageDetails(file);
   if ( !details.fits )
     return alert('Sorry!', 'Your calculator does not have enough free memory to receive this file.');
